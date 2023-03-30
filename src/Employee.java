@@ -1,48 +1,85 @@
 public class Employee {
-    private String firstName;
-    private String middleName;
-    private String lastName;
-    private int department;
+
+
+    private final String person;
+    private int depart;
     private int salary;
+    private static int counter = 0;
+    private final int id;
 
-
-
-    public Employee (String firstName, String middleName, String lastName, int department, int salary) {
-        this.firstName = firstName;
-        this.middleName = middleName;
-        this.lastName = lastName;
-        this.department = department;
+    public Employee(String person, int depart, int salary) {
+        this.person = person;
+        this.depart = depart;
         this.salary = salary;
+        this.id=counter++;
     }
-    public static int id = 0;
-    public String getFirstName() {
-        return this.firstName;
-    } public String getMiddleName() {
-        return this.middleName;
-    } public String getLastName() {
-        return this.lastName;
-    } public int getSalary() {
+    public int getId() {
+        return this.id;
+    }
+    public String getPerson() {
+        return this.person;
+    }
+
+    public int getDepart() {
+        return this.depart;
+    }
+
+    public int getSalary() {
         return this.salary;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public void setMiddleName(String middleName) {
-        this.middleName = middleName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public void setDepartment(int department) {
-        this.department = department;
+    public void setDepart(int depart) {
+        this.depart = depart;
     }
 
     public void setSalary(int salary) {
         this.salary = salary;
     }
+    public static Employee[] employees = new Employee[10];
+    public static void getAllEmployees() {
+        for (Employee employee : employees) {
+            System.out.println(employee);
+        }
+    }
+    public static int getSumSalary() {
+        int sumSalary = 0;
+        for (Employee employee : employees) {
+            sumSalary += employee.getSalary();
+        }
+        return sumSalary;
+    }
+    public static Employee getMinSalary() {
+        Employee minSalary = employees[0];
+        for (Employee employee : employees) {
+            if (employee.getSalary() < minSalary.getSalary()) {
+                minSalary =employee;
+            }
+        }
+        return  minSalary;
+    }
+    public static Employee getMaxSalary() {
+        Employee maxSalary = employees[0];
+        for (Employee employee : employees) {
+            if (employee.getSalary() > maxSalary.getSalary()) {
+                maxSalary = employee;
+            }
+        }
+        return maxSalary;
+    }
+    public static double getAverageSalary() {
+        double sumSalary = getSumSalary();
+        return sumSalary / employees.length;
+    }
+    public static String[] getEmployeesFullNames() {
+        String[] employeesFullNames = new String[employees.length];
+        for (int i = 0; i < employees.length; i++) {
+            employeesFullNames[i]=employees[i].getPerson();
+        }
+        return  employeesFullNames;
+    }
+    @Override
+    public String toString() {
+        return "Сотрудик №" + getId() + " ФИО " + getPerson() + "." + " Отдел " + getDepart() + " Зарплата: " + getSalary();
 
+    }
 }
