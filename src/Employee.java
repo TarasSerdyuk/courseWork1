@@ -1,23 +1,44 @@
 public class Employee {
-
-
-    private final String person;
+    private  String lastName;
+    private String firstName;
+    private  String middleName;
     private int depart;
     private int salary;
     private static int counter = 0;
-    private final int id;
+    private int id;
 
-    public Employee(String person, int depart, int salary) {
-        this.person = person;
+    public Employee(String lastName, String firstName, String middleName, int depart, int salary) {
+        this.lastName = lastName;
+        this.firstName = firstName;
+        this.middleName = middleName;
         this.depart = depart;
         this.salary = salary;
-        this.id=counter++;
+        this.id = counter++;
     }
     public int getId() {
         return this.id;
     }
-    public String getPerson() {
-        return this.person;
+
+    public String getLastName() {
+        return lastName;
+    }
+    public String getFirstName() {
+        return firstName;
+    }
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
     }
 
     public int getDepart() {
@@ -35,51 +56,8 @@ public class Employee {
     public void setSalary(int salary) {
         this.salary = salary;
     }
-    public static Employee[] employees = new Employee[10];
-    public static void getAllEmployees() {
-        for (Employee employee : employees) {
-            System.out.println(employee);
-        }
-    }
-    public static int getSumSalary() {
-        int sumSalary = 0;
-        for (Employee employee : employees) {
-            sumSalary += employee.getSalary();
-        }
-        return sumSalary;
-    }
-    public static Employee getMinSalary() {
-        Employee minSalary = employees[0];
-        for (Employee employee : employees) {
-            if (employee.getSalary() < minSalary.getSalary()) {
-                minSalary =employee;
-            }
-        }
-        return  minSalary;
-    }
-    public static Employee getMaxSalary() {
-        Employee maxSalary = employees[0];
-        for (Employee employee : employees) {
-            if (employee.getSalary() > maxSalary.getSalary()) {
-                maxSalary = employee;
-            }
-        }
-        return maxSalary;
-    }
-    public static double getAverageSalary() {
-        double sumSalary = getSumSalary();
-        return sumSalary / employees.length;
-    }
-    public static String[] getEmployeesFullNames() {
-        String[] employeesFullNames = new String[employees.length];
-        for (int i = 0; i < employees.length; i++) {
-            employeesFullNames[i]=employees[i].getPerson();
-        }
-        return  employeesFullNames;
-    }
     @Override
     public String toString() {
-        return "Сотрудик №" + getId() + " ФИО " + getPerson() + "." + " Отдел " + getDepart() + " Зарплата: " + getSalary();
-
+        return "Сотрудик №" + getId() + " ФИО " + getLastName() + " " + getFirstName() + " " + getMiddleName() + "." + " Отдел: " + getDepart() + " Зарплата: " + getSalary();
     }
 }
