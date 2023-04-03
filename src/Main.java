@@ -21,7 +21,7 @@ public class Main {
         System.out.println("Сотрудник с максимальной зп: " + findEmployeeMaxSalary(employees));
         System.out.println("Средняя зп: " + getAverageSalary(employees));
         printEmployeesFullNames(employees);
-
+// Базовая сложность
     }
 
     public static void getAllEmployees(Employee[] employees) {
@@ -69,14 +69,15 @@ public class Main {
         String lastName = null;
         String firstName = null;
         String middleName = null;
-                for (Employee employee : employees) {
-                    lastName = employee.getLastName();
-                    firstName = employee.getFirstName();
-                    middleName = employee.getMiddleName();
+         for (Employee employee : employees) {
+              lastName = employee.getLastName();
+              firstName = employee.getFirstName();
+              middleName = employee.getMiddleName();
 
-                    System.out.println("ФИО: " + lastName + " " + firstName + " " + middleName);
-        }
-
+              System.out.println("ФИО: " + lastName + " " + firstName + " " + middleName);
+         }
     }
+    // Повышенная сложность
+
     }
 
